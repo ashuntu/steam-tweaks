@@ -13,7 +13,7 @@ class Footer extends StatelessWidget {
       alignment: MainAxisAlignment.center,
       children: [
         Html(
-          data: l10n.footerLabel('numberapi.com', 'http://numbersapi.com'),
+          data: l10n.footerLabel('Steam Snap', 'https://snapcraft.io/steam'),
           shrinkWrap: true,
           onAnchorTap: (url, _, __, ___) => launchUrlString(url!),
         ),

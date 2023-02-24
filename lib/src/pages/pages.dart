@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import 'math/math_page.dart';
-import 'trivia/trivia_page.dart';
-import 'year/year_page.dart';
+import 'welcome/welcome_page.dart';
+import 'actions/actions_page.dart';
+import 'tips/tips_page.dart';
+import 'about/about_page.dart';
 
 class PageBuilder {
   const PageBuilder({
@@ -18,18 +19,23 @@ class PageBuilder {
 
 const pages = [
   PageBuilder(
-    iconBuilder: MathPage.buildIcon,
-    titleBuilder: MathPage.buildTitle,
-    pageBuilder: MathPage.buildDetail,
+    iconBuilder: WelcomePage.buildIcon,
+    titleBuilder: WelcomePage.buildTitle,
+    pageBuilder: WelcomePage.buildDetail,
   ),
   PageBuilder(
-    iconBuilder: TriviaPage.buildIcon,
-    titleBuilder: TriviaPage.buildTitle,
-    pageBuilder: TriviaPage.buildDetail,
+    iconBuilder: ActionsPage.buildIcon,
+    titleBuilder: ActionsPage.buildTitle,
+    pageBuilder: ActionsPage.buildDetail,
   ),
   PageBuilder(
-    iconBuilder: YearPage.buildIcon,
-    titleBuilder: YearPage.buildTitle,
-    pageBuilder: YearPage.buildDetail,
+    iconBuilder: TipsPage.buildIcon,
+    titleBuilder: TipsPage.buildTitle,
+    pageBuilder: TipsPage.buildDetail,
+  ),
+  PageBuilder(
+    iconBuilder: AboutPage.buildIcon,
+    titleBuilder: AboutPage.buildTitle,
+    pageBuilder: AboutPage.buildDetail,
   ),
 ];
