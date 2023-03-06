@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:ubuntu_service/ubuntu_service.dart';
 import 'package:yaru_icons/yaru_icons.dart';
 import 'package:yaru_widgets/yaru_widgets.dart';
+import 'actions_model.dart';
 
 class ActionsPage extends StatefulWidget {
   const ActionsPage({super.key});
@@ -48,55 +49,88 @@ class _ActionsPageState extends State<ActionsPage> {
         child: Center(
           child: Column(
             children: [
+              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text("Would you like to migrate your library?"),
-                  ElevatedButton(
-                    child: Text("Migrate"),
-                    onPressed: () {
-                      Process.run("./test.sh", []).then(
-                        (value) {
-                          final so = value.stdout;
-                          print("Script output: $so");
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        child: const Text("Migrate (copy)"),
+                        onPressed: () {
+                          migrate();
                         },
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("Select a GPU"),
-                  DropdownButton(
-                    items: const [
-                      DropdownMenuItem(
-                        child: Text("Default"),
-                        value: 0,
                       ),
-                      DropdownMenuItem(
-                        child: Text("Intel"),
-                        value: 1,
+                      ElevatedButton(
+                        child: const Text("Migrate (link)"),
+                        onPressed: () {
+                          migrate();
+                        },
                       ),
-                      DropdownMenuItem(
-                        child: Text("NVIDIA"),
-                        value: 2,
-                      )
                     ],
-                    onChanged: (value) => {},
                   ),
                 ],
               ),
-              GamemodeWidget(),
-              MangoWidget(),
-              ProtonWidget(),
+              const Spacer(),
+              const GPUWidget(),
+              const Spacer(),
+              const GamemodeWidget(),
+              const MangoWidget(),
+              const ProtonWidget(),
+              const Spacer(),
             ],
           ),
         ),
       ),
       bottomNavigationBar: const Footer(),
+    );
+  }
+}
+
+class GPUWidget extends StatefulWidget {
+  const GPUWidget({
+    super.key,
+  });
+
+  @override
+  State<GPUWidget> createState() => _GPUWidgetState();
+}
+
+class _GPUWidgetState extends State<GPUWidget> {
+  int selectedValue = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Text("Select a GPU"),
+        DropdownButton(
+          value: selectedValue,
+          items: const [
+            DropdownMenuItem(
+              child: Text("Default"),
+              value: 0,
+            ),
+            DropdownMenuItem(
+              child: Text("Intel"),
+              value: 1,
+            ),
+            DropdownMenuItem(
+              child: Text("NVIDIA"),
+              value: 2,
+            )
+          ],
+          onChanged: (value) {
+            setState(() {
+              selectedValue = value!;
+            });
+          },
+        ),
+      ],
     );
   }
 }
@@ -115,13 +149,22 @@ class _ProtonWidgetState extends State<ProtonWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
       children: [
         IconButton(
           icon: Icon(Icons.info),
-          onPressed: () {},
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: Text(l10n.protonInfoTitle),
+              content: Text(l10n.protonInfoContent),
+              actions: [],
+            ),
+          ),
         ),
         Text("Enable Proton"),
         Switch(
@@ -152,13 +195,22 @@ class _MangoWidgetState extends State<MangoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
       children: [
         IconButton(
           icon: Icon(Icons.info),
-          onPressed: () {},
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: Text(l10n.mangoInfoTitle),
+              content: Text(l10n.mangoInfoContent),
+              actions: [],
+            ),
+          ),
         ),
         Text("Enable MangoHUD"),
         Switch(
@@ -189,13 +241,22 @@ class _GamemodeWidgetState extends State<GamemodeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
       children: [
         IconButton(
           icon: Icon(Icons.info),
-          onPressed: () {},
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: Text(l10n.gamemodeInfoTitle),
+              content: Text(l10n.gamemodeInfoContent),
+              actions: [],
+            ),
+          ),
         ),
         Text("Enable GameMode"),
         Switch(

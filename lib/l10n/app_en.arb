@@ -22,6 +22,16 @@
   "triviaPageTitle": "Trivia",
   "yearPageTitle": "Year",
   "homeText": "<p>The Steam snap packages all of the dependencies you need to run the games in your library including the latest Mesa drivers.</p><p>This app is designed to get you up and running with the Steam snap as quickly as possible and includes tips on how to configure your system to support a gaming setup.</p><p>Check the getting started section to enable some specific features to migrate your game library and enable controller support.<br />And the Tips section to keep things running smoothly in future!</p>",
-  "aboutText": "<p>The Steam snap and Steam tweaks app are published and maintained by Canonical.</p><b>Documentation</b><br /><a href='https://github.com/canonical/steam-snap'>https://github.com/canonical/steam-snap</a><br /><br /><b>Report an issue</b><br />To report an issue you will need to enable the snap to collect information about your system:<br /><code>snap connect steam:system-observe</code><br /><code>snap connect steam:hardware-observe</code><br /><br />Once this has been enabled you can report a title with:<br /><code>snap run steam.report 'GAMENAME'</code><br /><br />To see what information will be reported you can also run:<br /><code>snap run steam.report --no-submit</code><br /><br />The report will generate a new post on the Game Reports discussion category of our Github where you can provide additional logs or more details on the issue.",
-  "tipText": "<ul><li>Check you have the latest drivers here</li><li>You can enable Proton support for all games by going to Steam > settings etc</li><li>Gamemode helps maximise the performance of your games, you can enable it for certain titles by editing the run command here…</li><li>Other tips</li></ul>"
+  "aboutText": "<p>The Steam snap and Steam tweaks app are published and maintained by Canonical.</p><br /><b>Documentation</b><br /><a href='https://github.com/canonical/steam-snap'>https://github.com/canonical/steam-snap</a><br /><br /><b>Report an issue</b><br />To report an issue you will need to enable the snap to collect information about your system:<br /><code>snap connect steam:system-observe</code><br /><code>snap connect steam:hardware-observe</code><br /><br />Once this has been enabled you can report a title with:<br /><code>snap run steam.report 'GAMENAME'</code><br /><br />To see what information will be reported you can also run:<br /><code>snap run steam.report --no-submit</code><br /><br />The report will generate a new post on the Game Reports discussion category of our Github where you can provide additional logs or more details on the issue.",
+  "tipText": "<ul><li>Check you have the latest drivers here</li><li>You can enable Proton support for all games by going to Steam > settings etc</li><li>Gamemode helps maximise the performance of your games, you can enable it for certain titles by editing the run command here…</li><li>Other tips</li></ul>",
+  "protonInfoTitle": "Proton Info",
+  "protonInfoContent": "Some detailed Proton information.",
+  "gamemodeInfoTitle": "GameMode Info",
+  "gamemodeInfoContent": "Some detailed GameMode information.",
+  "mangoInfoTitle": "MangoHUD Info",
+  "mangoInfoContent": "Some detailed MangoHUD information.",
+  "migrateInfoTitle": "Migrate Info",
+  "migrateInfoContent": "Some detailed Migration information.",
+  "gpuInfoTitle": "GPU Info",
+  "gpuInfoContent": "Some detailed Proton information."
 }
