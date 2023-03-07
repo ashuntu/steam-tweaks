@@ -49,24 +49,24 @@ class _ActionsPageState extends State<ActionsPage> {
         child: Center(
           child: Column(
             children: [
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text("Would you like to migrate your library?"),
+                  const Text("Would you like to migrate your library?"),
                   Column(
                     children: [
                       ElevatedButton(
                         child: const Text("Migrate (copy)"),
                         onPressed: () {
-                          migrate();
+                          migrate(context, "copy");
                         },
                       ),
                       ElevatedButton(
                         child: const Text("Migrate (link)"),
                         onPressed: () {
-                          migrate();
+                          migrate(context, "link");
                         },
                       ),
                     ],
