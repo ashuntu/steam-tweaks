@@ -170,10 +170,11 @@ class _ProtonWidgetState extends State<ProtonWidget> {
         Switch(
           value: useProton,
           onChanged: (value) {
-            print("Proton: $value");
             setState(() {
               useProton = value;
             });
+
+            extendedProton(value);
           },
         )
       ],
@@ -216,10 +217,15 @@ class _MangoWidgetState extends State<MangoWidget> {
         Switch(
           value: useMango,
           onChanged: (value) {
-            print("Mangohud: $value");
             setState(() {
               useMango = value;
             });
+
+            if (value) {
+              addLaunchOptions(["mangohud"]);
+            } else {
+              removeLaunchOptions(["mangohud"]);
+            }
           },
         ),
       ],
@@ -262,11 +268,15 @@ class _GamemodeWidgetState extends State<GamemodeWidget> {
         Switch(
           value: useGamemode,
           onChanged: (value) {
-            // TODO: enable gamemode
-            print("Gamemode: $value");
             setState(() {
               useGamemode = value;
             });
+
+            if (value) {
+              addLaunchOptions(["gamemoderun"]);
+            } else {
+              removeLaunchOptions(["gamemoderun"]);
+            }
           },
         ),
       ],
